@@ -16,7 +16,7 @@ function Login() {
     try {
       let response = await authenticate(dispatch, payload)
       if (!response.user) return
-      navigate("/home", { replace: true })
+      navigate("/", { replace: true })
     } catch (e) {
       console.log(e);
     }
@@ -36,7 +36,8 @@ function Login() {
                  onChange={ e => setPassword(e.target.value) }/>
           <label className="form-label">Password</label>
         </div>
-        <button type="button" className="btn btn-primary btn-block mb-4" onClick={ handleLogin }>Sign in</button>
+        <button type="submit" className="btn btn-primary btn-block mb-4" onClick={ handleLogin }>Sign in</button>
+
         <div className="text-center">
           <p>Not a member? <Link to="/register">Register</Link></p>
           <p>or sign in with:</p>

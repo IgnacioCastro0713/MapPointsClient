@@ -11,14 +11,14 @@ let token = localStorage.getItem('currentUser')
 export const initialState = () => ({
   user: '' || user,
   token: '' || token,
-  logged: false,
+  logged: !!user,
 })
 
 export const AuthenticationReduce = (state = {}, action) => {
   switch (action.type) {
     case types.login:
       return {
-        ...action.payload.user,
+        user: { ...action.payload.user },
         token: action.payload.token,
         logged: true,
       }

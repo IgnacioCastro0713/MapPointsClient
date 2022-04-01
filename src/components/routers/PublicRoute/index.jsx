@@ -6,7 +6,7 @@ function PublicRoute({ children }) {
   const user = useAuthenticationState()
 
   return user.logged
-    ? <Navigate to="/marvel" />
+    ? <Navigate to="/" />
     : children
 }
 

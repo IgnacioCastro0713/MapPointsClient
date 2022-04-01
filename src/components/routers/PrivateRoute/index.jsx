@@ -5,9 +5,9 @@ import { useAuthenticationState } from "../../../context/authentication.context"
 function PrivateRoute({ children }) {
   const user = useAuthenticationState()
 
-    return user.logged
+  return user.logged
     ? children
-    : <Navigate to="/login" />
+    : <Navigate to="/login"/>
 }
 
 export default PrivateRoute

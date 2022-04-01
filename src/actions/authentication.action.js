@@ -22,7 +22,7 @@ export async function authenticate(dispatch, loginPayload) {
   }
 }
 
-export async function logout(dispatch) {
+export function logout(dispatch) {
   dispatch({ type: types.logout });
   localStorage.removeItem('currentUser');
 }

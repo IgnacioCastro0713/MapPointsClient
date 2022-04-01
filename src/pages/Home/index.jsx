@@ -1,9 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
+import { useAuthenticationDispatch } from "../../context/authentication.context";
+import { logout } from "../../actions/authentication.action";
 
-function Home(props) {
+function Home() {
+  const navigate = useNavigate();
+  const dispatch = useAuthenticationDispatch()
+
+  const handleLogout = () => {
+    logout(dispatch)
+    navigate('/login', { replace: true })
+  }
   return (
-    <div>Home</div>
-  );
+    <button
+      className="nav-item nav-link btn"
+      onClick={ handleLogout }
+    >
+      Logout
+    </button>
+  )
 }
 
-export default Home;
+export default Home
