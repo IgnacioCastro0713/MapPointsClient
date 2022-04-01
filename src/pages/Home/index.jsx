@@ -1,10 +1,11 @@
-import React from 'react';
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuthenticationDispatch } from "../../context/authentication.context";
-import { logout } from "../../actions/authentication.action";
+import { useAuthenticationDispatch, useAuthenticationState } from "../../context/authentication.context"
+import { logout } from "../../actions/authentication.action"
 
 function Home() {
   const navigate = useNavigate();
+  const { user } = useAuthenticationState()
   const dispatch = useAuthenticationDispatch()
 
   const handleLogout = () => {
@@ -12,12 +13,15 @@ function Home() {
     navigate('/login', { replace: true })
   }
   return (
-    <button
-      className="nav-item nav-link btn"
-      onClick={ handleLogout }
-    >
-      Logout
-    </button>
+    <div>
+      <h1> Welcome, {user.firstName} {user.lastName} </h1>
+      <button
+        className="nav-item nav-link btn"
+        onClick={ handleLogout }
+      >
+        Logout
+      </button>
+    </div>
   )
 }
 
