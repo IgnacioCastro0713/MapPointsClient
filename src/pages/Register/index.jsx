@@ -8,15 +8,19 @@ function Register() {
       <h1>Register</h1>
       <form>
         <div className="form-outline mb-4">
-          <input type="text" id="registerName" className="form-control"/>
+          <input type="text" id="name" className="form-control"/>
           <label className="form-label">Name</label>
         </div>
         <div className="form-outline mb-4">
-          <input type="text" id="registerUsername" className="form-control"/>
-          <label className="form-label">Username</label>
+          <input type="email" id="first_name" className="form-control"/>
+          <label className="form-label">First name</label>
         </div>
         <div className="form-outline mb-4">
-          <input type="email" id="registerEmail" className="form-control"/>
+          <input type="email" id="last_name" className="form-control"/>
+          <label className="form-label">Last name</label>
+        </div>
+        <div className="form-outline mb-4">
+          <input type="email" id="email" className="form-control"/>
           <label className="form-label">Email</label>
         </div>
         <div className="form-outline mb-4">
@@ -32,16 +36,16 @@ function Register() {
           <p>Are you Member? <Link to="/login">Login</Link></p>
           <p>or sign up with:</p>
           <button type="button" className="btn btn-link btn-floating mx-1">
-            <i className="fa fa-facebook-f"></i>
+            <i className="fa fa-facebook-f"/>
           </button>
           <button type="button" className="btn btn-link btn-floating mx-1">
-            <i className="fa fa-google"></i>
+            <i className="fa fa-google"/>
           </button>
           <button type="button" className="btn btn-link btn-floating mx-1">
-            <i className="fa fa-twitter"></i>
+            <i className="fa fa-twitter"/>
           </button>
           <button type="button" className="btn btn-link btn-floating mx-1">
-            <i className="fa fa-github"></i>
+            <i className="fa fa-github"/>
           </button>
         </div>
       </form>
