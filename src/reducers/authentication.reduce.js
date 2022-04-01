@@ -1,20 +1,20 @@
-import React from 'react';
-import { types } from "../types/authentication.type";
+import React from 'react'
+import { types } from '../types/authentication.type'
 
 let user = localStorage.getItem('currentUser')
   ? JSON.parse(localStorage.getItem('currentUser')).user
-  : '';
+  : ''
 let token = localStorage.getItem('currentUser')
   ? JSON.parse(localStorage.getItem('currentUser')).token
-  : '';
+  : ''
 
 export const initialState = () => ({
   user: '' || user,
   token: '' || token,
   logged: false,
-});
+})
 
-export const AuthenticationReducer = (state = {}, action) => {
+export const AuthenticationReduce = (state = {}, action) => {
   switch (action.type) {
     case types.login:
       return {
@@ -25,9 +25,9 @@ export const AuthenticationReducer = (state = {}, action) => {
     case types.logout:
       return {
         token: '',
-        logged: true,
+        logged: false,
       }
     default:
-      throw new Error(`Unhandled action type: ${ action.type }`);
+      throw new Error(`Unhandled action type: ${ action.type }`)
   }
-};
+}

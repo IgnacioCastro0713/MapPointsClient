@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { AuthenticationReducer, initialState } from "../reducers/authentication.reducer";
+import { AuthenticationReduce, initialState } from "../reducers/authentication.reduce";
 
 
 const AuthenticationContext = createContext({});
@@ -13,14 +13,14 @@ export function useAuthenticationState() {
 }
 
 export function useAuthenticationDispatch() {
-  const context = useContext(AuthenticationDispatchContext);
+  const context = useContext(AuthenticationDispatchContext)
   if (!context) throw new Error('useAuthenticationDispatch must be used within a AuthProvider');
 
-  return context;
+  return context
 }
 
 export function AuthenticationProvider({ children }) {
-  const [user, dispatch] = useReducer(AuthenticationReducer, {}, initialState);
+  const [user, dispatch] = useReducer(AuthenticationReduce, {}, initialState)
 
   return (
     <AuthenticationContext.Provider value={ user }>
@@ -28,5 +28,5 @@ export function AuthenticationProvider({ children }) {
         { children }
       </AuthenticationDispatchContext.Provider>
     </AuthenticationContext.Provider>
-  );
-};
+  )
+}

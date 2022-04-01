@@ -25,5 +25,4 @@ export async function authenticate(dispatch, loginPayload) {
 export async function logout(dispatch) {
   dispatch({ type: types.logout });
   localStorage.removeItem('currentUser');
-  localStorage.removeItem('token');
 }

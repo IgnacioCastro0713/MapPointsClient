@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthenticationDispatch } from "../../context/authentication.context";
 import { authenticate } from "../../actions/authentication.action";
 
 
-function Login({ history }) {
+function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useAuthenticationDispatch()
+  const navigate = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -15,7 +16,7 @@ function Login({ history }) {
     try {
       let response = await authenticate(dispatch, payload)
       if (!response.user) return
-      history.push("/home")
+      navigate("/home", { replace: true })
     } catch (e) {
       console.log(e);
     }
