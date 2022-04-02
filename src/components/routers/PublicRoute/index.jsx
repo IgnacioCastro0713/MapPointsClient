@@ -1,9 +1,9 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { useAuthenticationState } from "../../../context/authentication.context"
+import { useApplicationState } from "../../../context/application.context"
 
 function PublicRoute({ children }) {
-  const user = useAuthenticationState()
+  const { auth:user } = useApplicationState()
 
   return user.logged
     ? <Navigate to="/" />

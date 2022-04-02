@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import { useAuthenticationDispatch } from "../../context/authentication.context"
+import { useApplicationDispatch } from "../../context/application.context"
 import { authenticate } from "../../actions/authentication.action"
+import { alertTypes } from "../../types/alert.type";
 
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submitted, setSubmitted] = useState(false)
-
-  const dispatch = useAuthenticationDispatch()
+  const { authDispatch, alertDispatch } = useApplicationDispatch()
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
@@ -18,11 +18,11 @@ function Login() {
     if (email && password) {
       let payload = { email, password }
       try {
-        let response = await authenticate(dispatch, payload)
+        let response = await authenticate(authDispatch, payload)
         if (!response?.user) return
         navigate("/", { replace: true })
       } catch (e) {
-        console.log(e)
+        alertDispatch({ type: alertTypes.ERROR, message: e.message })
       }
     }
   }

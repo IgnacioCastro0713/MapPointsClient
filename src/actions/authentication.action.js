@@ -16,6 +16,11 @@ export async function authenticate(dispatch, payload) {
       dispatch({ type: AuthenticationTypes.LOGIN, payload: data });
       localStorage.setItem('currentUser', JSON.stringify(data));
     }
+
+    if (data.message) {
+      throw new Error(data.message);
+    }
+
     return data;
   } catch (error) {
     throw error
