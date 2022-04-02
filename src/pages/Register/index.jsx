@@ -15,29 +15,27 @@ function Register() {
   const { alertDispatch } = useApplicationDispatch()
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitted(true)
+
     if (email && firstName && lastName && password) {
       try {
-        fetch(`${ ROOT_URL }/User/Register`, {
+        const config = {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             email,
             firstName,
             lastName,
             password
           })
-        })
-          .then(res => res.json())
-          .then(res => {
-            alertDispatch({ type: alertTypes.SUCCESS, message: res.message })
-          })
-      } catch (err) {
-        alertDispatch({ type: alertTypes.ERROR, message: err.message })
+        }
+        const response = await fetch(`${ ROOT_URL }/User/Register`, config)
+        const data = await response.json()
+        alertDispatch({ type: alertTypes.SUCCESS, message: data.message })
+      } catch (error) {
+        alertDispatch({ type: alertTypes.ERROR, message: error.message })
       }
     }
   }
