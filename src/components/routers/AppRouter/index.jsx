@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useApplicationState } from '../../../context/application.context'
+
 
 import PublicRoute from "../PublicRoute"
 import Login from "../../../pages/Login"
@@ -11,6 +12,7 @@ import Register from "../../../pages/Register"
 
 function AppRouter() {
   const { alert } = useApplicationState()
+
   return (
     <div>
       { alert.message &&

@@ -1,8 +1,9 @@
-import React, { useReducer, useState } from 'react'
+import React, {  useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import { useApplicationDispatch } from "../../context/application.context"
 import { authenticate } from "../../actions/authentication.action"
 import { alertTypes } from "../../types/alert.type";
+
 
 
 function Login() {
@@ -12,7 +13,7 @@ function Login() {
   const { authDispatch, alertDispatch } = useApplicationDispatch()
   const navigate = useNavigate()
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitted(true);
     if (email && password) {
@@ -47,7 +48,7 @@ function Login() {
                  onChange={ e => setPassword(e.target.value) }/>
           { submitted && !password && <span className="invalid-feedback">Password is required</span> }
         </div>
-        <button type="submit" className="btn btn-primary btn-block mb-4" onClick={ handleLogin }>Sign in</button>
+        <button type="submit" className="btn btn-primary btn-block mb-4" onClick={ handleSubmit }>Sign in</button>
 
         <div className="text-center">
           <p>Not a member? <Link to="/register">Register</Link></p>
